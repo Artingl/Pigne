@@ -4,7 +4,7 @@
 class Engine;
 
 #include <stdarg.h>
-#include <Engine.h>
+#include <pigne/Engine.h>
 
 class Debugger {
 private:

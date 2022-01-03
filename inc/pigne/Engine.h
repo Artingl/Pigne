@@ -2,18 +2,29 @@
 #define ENGINE_H
 
 class Debugger;
+class Window;
 
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <Timer.h>
-#include <Debugger.h>
-#include <Colors.h>
+
+#include <GL/glut.h>
+#include <pigne/Vec2.h>
+#include <pigne/Vec3.h>
+
+#include <pigne/Timer.h>
+#include <pigne/Window.h>
+#include <pigne/Camera.h>
+#include <pigne/Debugger.h>
+#include <pigne/Colors.h>
 
 class Engine {
 private:
     Debugger*debugger;
+    Window*window;
+    Camera*camera;
+
     uint64_t startTimestamp;
 
 public:
@@ -22,6 +33,11 @@ public:
      * Class constructor
      * */
     Engine();
+
+    /*
+     * Glut initialization
+     * */
+    void initEngine(int argc, char*argv[]);
 
     /*
      * Will register an handler, that's going to be executed when Engine closes.
@@ -38,6 +54,21 @@ public:
      * */
     Debugger*getDebugger();
 
+    /*
+     * Returns engine window class
+     * */
+    Window*getWindow();
+
+    /*
+     * Returns engine camera class
+     * */
+    Camera*getCamera();
+
 };
+
+/*
+ * Returns global engine instance
+ * */
+Engine*getEngineInstance();
 
 #endif
