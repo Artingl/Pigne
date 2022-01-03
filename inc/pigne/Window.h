@@ -6,6 +6,9 @@ class Window;
 
 typedef void (*windowUpdateHandler)();
 
+#include <stdarg.h>
+#include <stdlib.h>
+
 #include <pigne/Engine.h>
 #include <GL/glut.h>
 
@@ -48,6 +51,21 @@ public:
      * Draws framebuffer onto screen
      * */
     void drawFramebuffer();
+
+    /*
+     * Changes current window title
+     * */
+    void setTitle(char*fmt);
+    
+    /*
+     * Changes current window size
+     * */
+    void setSize(Vec2*i);
+
+    /*
+     * Changes current window position
+     * */
+    void setPosition(Vec2*i);
 
     /*
      * Returns current window update handler

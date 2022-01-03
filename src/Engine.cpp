@@ -13,11 +13,15 @@ Engine::Engine()
     this->debugger = new Debugger(this);
     this->window = new Window(this);
     this->camera = new Camera(this);
+    this->renderer = new Renderer(this);
+
+    this->hasBeenInitialized = false;
 }
 
 void Engine::initEngine(int argc, char*argv[])
 {
     glutInit(&argc, argv);
+    this->hasBeenInitialized = true;
 }
 
 void Engine::registerEngineExitEvent(void*exit)
@@ -40,10 +44,27 @@ Debugger* Engine::getDebugger()
 
 Window* Engine::getWindow()
 {
+    if (!this->hasBeenInitialized)
+        this->getDebugger()->printError("Before doing any rendering stuff you must initialize the engine by calling Engine::initEngine method!"), 
+        exit(0);
+
     return this->window;
 }
 
 Camera* Engine::getCamera()
 {
+    if (!this->hasBeenInitialized)
+        this->getDebugger()->printError("Before doing any rendering stuff you must initialize the engine by calling Engine::initEngine method!"), 
+        exit(0);
+
     return this->camera;
+}
+
+Renderer* Engine::getRenderer()
+{
+    if (!this->hasBeenInitialized)
+        this->getDebugger()->printError("Before doing any rendering stuff you must initialize the engine by calling Engine::initEngine method!"), 
+        exit(0);
+
+    return this->renderer;
 }

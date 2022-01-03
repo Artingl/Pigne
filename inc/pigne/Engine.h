@@ -4,6 +4,10 @@
 class Debugger;
 class Window;
 
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#endif
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -16,6 +20,7 @@ class Window;
 #include <pigne/Timer.h>
 #include <pigne/Window.h>
 #include <pigne/Camera.h>
+#include <pigne/Renderer.h>
 #include <pigne/Debugger.h>
 #include <pigne/Colors.h>
 
@@ -24,6 +29,9 @@ private:
     Debugger*debugger;
     Window*window;
     Camera*camera;
+    Renderer*renderer;
+
+    bool hasBeenInitialized;
 
     uint64_t startTimestamp;
 
@@ -63,6 +71,11 @@ public:
      * Returns engine camera class
      * */
     Camera*getCamera();
+
+    /*
+     * Returns engine renderer class
+     * */
+    Renderer* getRenderer();
 
 };
 
