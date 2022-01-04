@@ -13,4 +13,5 @@ make build
 # TODO
 
 - [ ] Mouse/Keyboard handlers
-- [ ] Wrapper on OpenGL buffers
+- [X] Wrapper on OpenGL buffers
+- [ ] Loading textures from png/jpg/etc. images

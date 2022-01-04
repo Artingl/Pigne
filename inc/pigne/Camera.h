@@ -28,7 +28,7 @@ public:
     Camera(Engine*engine);
 
     /*
-     * Stes camera position
+     * Sets camera position
      * */
     void setPosition(Vec3*i);
 
